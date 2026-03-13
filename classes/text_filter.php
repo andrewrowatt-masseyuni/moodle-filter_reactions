@@ -66,13 +66,36 @@ class text_filter extends \core_filters\text_filter {
      * @return string rendered HTML
      */
     private function render_widget(string $type, ?string $itemid): string {
-        global $DB, $OUTPUT, $USER;
+        global $DB, $USER, $PAGE;
 
         $contextid = $this->context->id;
+        $itemidprefix = '';
+        
+        // If the context is a book module, prefix with chapter ID for per-chapter reactions.
+        if ($this->context->contextlevel == CONTEXT_MODULE) {
+            $cm = $PAGE->cm;
+            if ($cm && $cm->modname === 'book') {
+                $chapterid = optional_param('chapterid', 0, PARAM_INT);
+                if (!$chapterid) {
+                    // No chapter specified — default to the first chapter in the book.
+                    $firstchapter = $DB->get_records('book_chapters', ['bookid' => $cm->instance],
+                        'pagenum ASC', 'id', 0, 1);
+                    $firstchapter = reset($firstchapter);
+                    if ($firstchapter) {
+                        $chapterid = $firstchapter->id;
+                    }
+                }
+                if ($chapterid) {
+                    $itemidprefix = 'chapter' . $chapterid;
+                }
+            }
+        }
 
-        // Without an ID, we cannot persist reactions.
+        // Default the item ID to "defaultfor{contextid}" when none is provided.
         if (empty($itemid)) {
-            $itemid = '';
+            $itemid = 'defaultfor' . $itemidprefix . $contextid;
+        } else {
+            $itemid = $itemidprefix . $itemid;
         }
 
         $canreact = isloggedin() && !isguestuser();
