@@ -15,25 +15,29 @@
     Example context (json):
     { "contextid": 42, "itemid": "survey1", "canreact": true, "stars": [{"value": 1, "response": "1star", "filled": true, "selected": false}, {"value": 2, "response": "2stars", "filled": false, "selected": false}, {"value": 3, "response": "3stars", "filled": false, "selected": false}, {"value": 4, "response": "4stars", "filled": false, "selected": false}, {"value": 5, "response": "5stars", "filled": false, "selected": false}], "average": 3.5, "totalcount": 10, "hastotalcount": true }
 }}
-<span class="filter-reactions filter-reactions-stars d-inline-flex align-items-center"
+<span class="filter-reactions filter-reactions-stars d-inline-flex flex-column"
       data-region="filter-reactions"
       data-contextid="{{contextid}}"
       data-itemid="{{itemid}}"
       data-type="stars">
-    {{#stars}}
-    <button type="button"
-            class="filter-reactions-star btn btn-sm p-0{{#filled}} filled{{/filled}}{{#selected}} selected{{/selected}}"
-            data-action="react"
-            data-response="{{response}}"
-            data-value="{{value}}"
-            aria-label="{{value}} {{#str}}stars, filter_reactions{{/str}}"
-            {{^canreact}}disabled{{/canreact}}>
-        <i class="{{#filled}}fa-solid{{/filled}}{{^filled}}fa-regular{{/filled}} fa-star"></i>
-    </button>
-    {{/stars}}
-    {{#hastotalcount}}
-    <span class="filter-reactions-summary ml-2 small text-muted">
-        ({{average}} avg, {{totalcount}} {{#str}}ratings, filter_reactions{{/str}})
+    <span class="small text-muted">{{#str}}yourrating, filter_reactions{{/str}}</span>
+    <span style="line-height: 1;">
+        {{#stars}}
+        <button type="button"
+                class="filter-reactions-star btn btn-sm p-0{{#filled}} filled{{/filled}}{{#selected}} selected{{/selected}}"
+                data-action="react"
+                data-response="{{response}}"
+                data-value="{{value}}"
+                aria-label="{{value}} {{#str}}stars, filter_reactions{{/str}}"
+                {{^canreact}}disabled{{/canreact}}>
+            <i class="{{#filled}}fa-solid{{/filled}}{{^filled}}fa-regular{{/filled}} fa-star"></i>
+        </button>
+        {{/stars}}
+        {{#hastotalcount}}
+        <span class="filter-reactions-summary small text-muted d-inline-flex align-items-center">
+            <span class="badge badge-pill badge-light"><i class="fa-solid fa-star"></i> <span data-field="average">{{average}}</span></span>
+            <small><span data-field="totalcount">{{totalcount}}</span> {{#str}}ratings, filter_reactions{{/str}}</small>
+        </span>
+        {{/hastotalcount}}
     </span>
-    {{/hastotalcount}}
 </span>

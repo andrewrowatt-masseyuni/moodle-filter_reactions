@@ -209,7 +209,7 @@ class text_filter extends \core_filters\text_filter {
             'itemid' => $itemid,
             'canreact' => $canreact,
             'stars' => $stars,
-            'average' => $average,
+            'average' => number_format($average, 1),
             'totalcount' => $totalcount,
             'hastotalcount' => $totalcount > 0,
         ]);

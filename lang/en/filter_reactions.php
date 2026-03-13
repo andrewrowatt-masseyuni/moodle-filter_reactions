@@ -34,3 +34,4 @@ $string['unlike'] = 'Unlike';
 $string['undislike'] = 'Undo dislike';
 $string['stars'] = 'stars';
 $string['ratings'] = 'ratings';
+$string['yourrating'] = 'Your rating';

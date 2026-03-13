@@ -165,9 +165,17 @@ const updateStars = (widget, userresponse, counts) => {
     if (totalCount > 0) {
         const avg = (totalValue / totalCount).toFixed(1);
         if (summary) {
-            summary.textContent = `(${avg} avg, ${totalCount} ratings)`;
+            const avgEl = summary.querySelector('[data-field="average"]');
+            const countEl = summary.querySelector('[data-field="totalcount"]');
+            if (avgEl) {
+                avgEl.textContent = avg;
+            }
+            if (countEl) {
+                countEl.textContent = totalCount;
+            }
+            summary.style.display = '';
         }
     } else if (summary) {
-        summary.textContent = '';
+        summary.style.display = 'none';
     }
 };
