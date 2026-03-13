@@ -9,11 +9,16 @@
 import Ajax from 'core/ajax';
 import Notification from 'core/notification';
 
+let initialised = false;
+
 /**
  * Initialise event delegation for all reaction widgets on the page.
  */
 export const init = () => {
-    window.console.log('filter_reactions/main: init called, adding click listener');
+    if (initialised) {
+        return;
+    }
+    initialised = true;
     document.addEventListener('click', handleClick);
 };
 
@@ -27,7 +32,6 @@ const handleClick = async(e) => {
     if (!btn) {
         return;
     }
-    window.console.log('filter_reactions: button clicked', btn);
 
     const widget = btn.closest('[data-region="filter-reactions"]');
     if (!widget) {
@@ -39,7 +43,6 @@ const handleClick = async(e) => {
     const itemid = widget.dataset.itemid;
     const type = widget.dataset.type;
     const response = btn.dataset.response;
-    window.console.log('filter_reactions: params', {contextid, itemid, type, response});
 
     if (!itemid) {
         window.console.log('filter_reactions: no itemid, aborting');
