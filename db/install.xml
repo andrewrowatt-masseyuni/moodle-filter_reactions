@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="filter/reactions/db" VERSION="20260313" COMMENT="filter_reactions database tables"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="filter_reactions" COMMENT="Stores user reactions (thumbs/stars) on content">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="contextid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Moodle context ID"/>
+        <FIELD NAME="itemid" TYPE="char" LENGTH="64" NOTNULL="true" COMMENT="Alphanumeric item identifier from the tag"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="10" NOTNULL="true" COMMENT="Reaction type: thumbs or stars"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User who reacted"/>
+        <FIELD NAME="response" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="User response e.g. thumbsup, thumbsdown, 1star-5stars"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="userid_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="user_reaction_unique" UNIQUE="true" FIELDS="contextid, itemid, type, userid" COMMENT="One reaction per user per widget"/>
+        <INDEX NAME="item_lookup" UNIQUE="false" FIELDS="contextid, itemid, type" COMMENT="Fast lookup of all reactions for a widget"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

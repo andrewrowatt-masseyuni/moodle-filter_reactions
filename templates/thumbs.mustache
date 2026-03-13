@@ -1,0 +1,51 @@
+{{!
+    @template filter_reactions/thumbs
+
+    Renders a YouTube-style thumbs up/down reaction widget.
+
+    Context variables required for this template:
+    * contextid - Moodle context ID
+    * itemid - Item identifier
+    * canreact - Whether the user can interact
+    * thumbsupcount - Number of thumbs up
+    * thumbsdowncount - Number of thumbs down
+    * thumbsupselected - Whether the current user selected thumbs up
+    * thumbsdownselected - Whether the current user selected thumbs down
+
+    Example context (json):
+    { "contextid": 42, "itemid": "survey1", "canreact": true, "thumbsupcount": 5, "thumbsdowncount": 2, "thumbsupselected": false, "thumbsdownselected": false }
+}}
+<span class="filter-reactions filter-reactions-thumbs d-inline-flex align-items-center justify-content-end w-100"
+      data-region="filter-reactions"
+      data-contextid="{{contextid}}"
+      data-itemid="{{itemid}}"
+      data-type="thumbs">
+    <span class="filter-reactions-thumbs-pill d-inline-flex align-items-center">
+        <button type="button"
+                class="filter-reactions-thumbs-btn thumbs-up{{#thumbsupselected}} active{{/thumbsupselected}}"
+                data-action="react"
+                data-response="thumbsup"
+                aria-pressed="{{#thumbsupselected}}true{{/thumbsupselected}}{{^thumbsupselected}}false{{/thumbsupselected}}"
+                aria-label="{{#str}}thumbsup, filter_reactions{{/str}}"
+                title="{{#thumbsupselected}}{{#str}}unlike, filter_reactions{{/str}}{{/thumbsupselected}}{{^thumbsupselected}}{{#str}}ilikethis, filter_reactions{{/str}}{{/thumbsupselected}}"
+                data-title-on="{{#str}}unlike, filter_reactions{{/str}}"
+                data-title-off="{{#str}}ilikethis, filter_reactions{{/str}}"
+                {{^canreact}}disabled{{/canreact}}>
+            <i class="{{#thumbsupselected}}fa-solid{{/thumbsupselected}}{{^thumbsupselected}}fa-regular{{/thumbsupselected}} fa-thumbs-up"></i>
+            <span data-region="count">{{thumbsupcount}}</span>
+        </button>
+        <span class="filter-reactions-thumbs-divider"></span>
+        <button type="button"
+                class="filter-reactions-thumbs-btn thumbs-down{{#thumbsdownselected}} active{{/thumbsdownselected}}"
+                data-action="react"
+                data-response="thumbsdown"
+                aria-pressed="{{#thumbsdownselected}}true{{/thumbsdownselected}}{{^thumbsdownselected}}false{{/thumbsdownselected}}"
+                aria-label="{{#str}}thumbsdown, filter_reactions{{/str}}"
+                title="{{#thumbsdownselected}}{{#str}}undislike, filter_reactions{{/str}}{{/thumbsdownselected}}{{^thumbsdownselected}}{{#str}}idislikethis, filter_reactions{{/str}}{{/thumbsdownselected}}"
+                data-title-on="{{#str}}undislike, filter_reactions{{/str}}"
+                data-title-off="{{#str}}idislikethis, filter_reactions{{/str}}"
+                {{^canreact}}disabled{{/canreact}}>
+            <i class="{{#thumbsdownselected}}fa-solid{{/thumbsdownselected}}{{^thumbsdownselected}}fa-regular{{/thumbsdownselected}} fa-thumbs-down"></i>
+        </button>
+    </span>
+</span>

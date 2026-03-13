@@ -1,0 +1,88 @@
+/* Thumbs - YouTube style pill */
+.filter-reactions-thumbs-pill {
+    background-color: #f2f2f2;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.filter-reactions-thumbs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: none;
+    background: none;
+    color: #606060;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.15s;
+}
+
+.filter-reactions-thumbs-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.filter-reactions-thumbs-btn.active {
+    color: #065fd4;
+}
+
+.filter-reactions-thumbs-btn.thumbs-up.active {
+    background-color: #def1ff;
+}
+
+.filter-reactions-thumbs-btn i {
+    font-size: 16px;
+}
+
+.filter-reactions-thumbs-btn [data-region="count"] {
+    font-size: 13px;
+}
+
+.filter-reactions-thumbs-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #ccc;
+    flex-shrink: 0;
+}
+
+.filter-reactions-thumbs-btn:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+/* Stars */
+.filter-reactions-star {
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #ccc;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.filter-reactions-star.filled {
+    color: #f5a623;
+}
+
+.filter-reactions-star.selected {
+    color: #e09100;
+}
+
+.filter-reactions-star:hover {
+    color: #f5a623;
+}
+
+.filter-reactions-star:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.filter-reactions-star:disabled:hover {
+    color: #ccc;
+}
+
+.filter-reactions-star.filled:disabled:hover {
+    color: #f5a623;
+}
