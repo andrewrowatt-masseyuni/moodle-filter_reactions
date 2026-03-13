@@ -26,12 +26,20 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['filtername'] = 'Reactions';
-$string['thumbsup'] = 'Thumbs up';
-$string['thumbsdown'] = 'Thumbs down';
-$string['ilikethis'] = 'I like this';
 $string['idislikethis'] = 'I dislike this';
-$string['unlike'] = 'Unlike';
-$string['undislike'] = 'Undo dislike';
-$string['stars'] = 'stars';
+$string['ilikethis'] = 'I like this';
+$string['privacy:metadata:filter_reactions'] = 'Stores user reactions (thumbs or star ratings) on content.';
+$string['privacy:metadata:filter_reactions:contextid'] = 'The context ID where the reaction was made.';
+$string['privacy:metadata:filter_reactions:itemid'] = 'The item identifier for the reaction widget.';
+$string['privacy:metadata:filter_reactions:response'] = 'The user\'s response (e.g. thumbsup, 3stars).';
+$string['privacy:metadata:filter_reactions:timecreated'] = 'The time the reaction was first created.';
+$string['privacy:metadata:filter_reactions:timemodified'] = 'The time the reaction was last modified.';
+$string['privacy:metadata:filter_reactions:type'] = 'The reaction type (thumbs or stars).';
+$string['privacy:metadata:filter_reactions:userid'] = 'The ID of the user who reacted.';
 $string['ratings'] = 'ratings';
+$string['stars'] = 'stars';
+$string['thumbsdown'] = 'Thumbs down';
+$string['thumbsup'] = 'Thumbs up';
+$string['undislike'] = 'Undo dislike';
+$string['unlike'] = 'Unlike';
 $string['yourrating'] = 'Your rating';

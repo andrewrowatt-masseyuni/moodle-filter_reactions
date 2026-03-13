@@ -7,13 +7,13 @@
     <TABLE NAME="filter_reactions" COMMENT="Stores user reactions (thumbs/stars) on content">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="contextid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Moodle context ID"/>
-        <FIELD NAME="itemid" TYPE="char" LENGTH="64" NOTNULL="true" COMMENT="Alphanumeric item identifier from the tag"/>
-        <FIELD NAME="type" TYPE="char" LENGTH="10" NOTNULL="true" COMMENT="Reaction type: thumbs or stars"/>
-        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User who reacted"/>
-        <FIELD NAME="response" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="User response e.g. thumbsup, thumbsdown, 1star-5stars"/>
-        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
-        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="contextid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Moodle context ID"/>
+        <FIELD NAME="itemid" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false" COMMENT="Alphanumeric item identifier from the tag"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Reaction type: thumbs or stars"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="User who reacted"/>
+        <FIELD NAME="response" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false" COMMENT="User response e.g. thumbsup, thumbsdown, 1star-5stars"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
