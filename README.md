@@ -16,7 +16,9 @@ A Moodle text filter that renders interactive reaction widgets (thumbs up/down a
 
 Insert reaction tags into any filtered text content (e.g. page resources, labels, forum posts):
 
+- `{reactions:thumbs}` — renders a thumbs up/down widget.
 - `{reactions:thumbs,myitemid}` — thumbs widget with a unique item identifier for persisting reactions.
+- `{reactions:stars}` — renders a 1-5 star rating widget.
 - `{reactions:stars,myitemid}` — star rating widget with a unique item identifier.
 
 An item identifier is required to save reactions to the database. Without one, the widget is displayed in a read-only state.
